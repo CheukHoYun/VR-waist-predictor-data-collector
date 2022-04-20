@@ -15,18 +15,8 @@ public class Data
     public Quaternion L_rotation;
     public Quaternion R_rotation;
     public Quaternion W_rotation;
-
-    // Note that H_velocity is actually the rate of change in its height,
-    // that's why it's a float
-    public float H_velocity;
-    public Vector3 L_velocity;
-    public Vector3 R_velocity;
-    public Vector3 W_velocity;
-    public Quaternion H_angular_velocity;
-    public Quaternion L_angular_velocity;
-    public Quaternion R_angular_velocity;
-    public Quaternion W_angular_velocity;
-
+    public float timestamp = 0.0f;
+    public int animation_count = 0;
 
     
 }

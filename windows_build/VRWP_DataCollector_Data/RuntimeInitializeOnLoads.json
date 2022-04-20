@@ -1,0 +1,1 @@
+{"root":[{"assemblyName":"Ludiq.OdinSerializer","nameSpace":"Ludiq.OdinSerializer","className":"UnitySerializationInitializer","methodName":"InitializeRuntime","loadTypes":1,"isUnityClass":false},{"assemblyName":"Ludiq.OdinSerializer","nameSpace":"Ludiq.OdinSerializer.Utilities","className":"UnityVersion","methodName":"EnsureLoaded","loadTypes":1,"isUnityClass":false}]}
