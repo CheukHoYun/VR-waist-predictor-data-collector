@@ -65,13 +65,13 @@ public class Visualizer : MonoBehaviour
         hrz = H_rotation.z;
         hrw = H_rotation.w;
 
-        Quaternion L_rotation = left.rotation;
+        Quaternion L_rotation = Quaternion.Inverse(head.rotation) * Quaternion.Inverse(left_init_rotation) * left.rotation;
         lrx = L_rotation.x;
         lry = L_rotation.y;
         lrz = L_rotation.z;
         lrw = L_rotation.w;
 
-        Quaternion R_rotation = right.rotation;
+        Quaternion R_rotation = Quaternion.Inverse(head.rotation) * Quaternion.Inverse(right_init_rotation) * right.rotation;
         rrx = R_rotation.x;
         rry = R_rotation.y;
         rrz = R_rotation.z;
@@ -85,7 +85,7 @@ public class Visualizer : MonoBehaviour
         Tensor r = worker.PeekOutput("waist_rotation");
 
         waist.position = (new Vector3(p[0], p[1], p[2])) * standard_height + head.position;
-        waist.rotation = new Quaternion(r[0], r[1], r[2], r[3]) * head.rotation;
+        waist.rotation = head.rotation * new Quaternion(r[0], r[1], r[2], r[3]) ;
 
         input.Dispose();
 

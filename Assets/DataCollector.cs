@@ -85,8 +85,8 @@ public class DataCollector : MonoBehaviour
 
             // Getting the rotation of left, right hand and waist. 
             // They are all relative to the head's rotation. 
-            Data.Instance.L_rotation = Quaternion.Inverse(head.rotation) * Quaternion.Inverse(left_init_rotation) * left.rotation;
-            Data.Instance.R_rotation = Quaternion.Inverse(head.rotation) * Quaternion.Inverse(right_init_rotation) * right.rotation;
+            Data.Instance.L_rotation = Quaternion.Inverse(left_init_rotation) * Quaternion.Inverse(head.rotation) *  left.rotation;
+            Data.Instance.R_rotation = Quaternion.Inverse(right_init_rotation) * Quaternion.Inverse(head.rotation) *  right.rotation;
             Data.Instance.W_rotation = Quaternion.Inverse(head.rotation) * waist.rotation;
 
 
