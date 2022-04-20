@@ -11,6 +11,11 @@ public class Visualizer : MonoBehaviour
     public Transform right;
     public Transform waist;
 
+    public Transform naive;
+    public float naive_delta;
+
+    public Transform actual;
+
     public NNModel modelSource;
 
     private float hh;
@@ -31,6 +36,7 @@ public class Visualizer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        naive_delta = head.position.y - actual.position.y; 
         standard_height = head.position.y;
         left_init_rotation = Quaternion.Inverse(head.rotation) * left.rotation;
         right_init_rotation = Quaternion.Inverse(head.rotation) * right.rotation;
@@ -43,6 +49,7 @@ public class Visualizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        naive.position = new Vector3(head.position.x, head.position.y - naive_delta, head.position.z);
         if (newAnim)
         {
             Refresh();
@@ -65,13 +72,13 @@ public class Visualizer : MonoBehaviour
         hrz = H_rotation.z;
         hrw = H_rotation.w;
 
-        Quaternion L_rotation = Quaternion.Inverse(head.rotation) * Quaternion.Inverse(left_init_rotation) * left.rotation;
+        Quaternion L_rotation = Quaternion.Inverse(left_init_rotation) * Quaternion.Inverse(head.rotation) *  left.rotation;
         lrx = L_rotation.x;
         lry = L_rotation.y;
         lrz = L_rotation.z;
         lrw = L_rotation.w;
 
-        Quaternion R_rotation = Quaternion.Inverse(head.rotation) * Quaternion.Inverse(right_init_rotation) * right.rotation;
+        Quaternion R_rotation = Quaternion.Inverse(right_init_rotation) * Quaternion.Inverse(head.rotation) *  right.rotation;
         rrx = R_rotation.x;
         rry = R_rotation.y;
         rrz = R_rotation.z;
@@ -84,7 +91,7 @@ public class Visualizer : MonoBehaviour
         Tensor p = worker.PeekOutput("waist_position");
         Tensor r = worker.PeekOutput("waist_rotation");
 
-        waist.position = (new Vector3(p[0], p[1], p[2])) * standard_height + head.position;
+        waist.position = head.TransformDirection(new Vector3(p[0], p[1], p[2]) * standard_height) + head.position;
         waist.rotation = head.rotation * new Quaternion(r[0], r[1], r[2], r[3]) ;
 
         input.Dispose();

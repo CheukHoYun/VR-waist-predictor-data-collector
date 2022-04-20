@@ -138,7 +138,7 @@ Animator:
   m_GameObject: {fileID: 109729076}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 35b48d679c2a60d498fa9005acce1c22, type: 2}
+  m_Controller: {fileID: 9100000, guid: c755910667efb9842961737a4e2735c3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -649,7 +649,7 @@ MonoBehaviour:
   left: {fileID: 1824030328}
   right: {fileID: 1651041873}
   waist: {fileID: 764467862}
-  modelSource: {fileID: 5022602860645237092, guid: 4e091c023732b96438a0391d561ec1ec, type: 3}
+  modelSource: {fileID: 5022602860645237092, guid: 68221d3215bae8d4dabf7005b5126a5d, type: 3}
 --- !u!1 &1363403776
 GameObject:
   m_ObjectHideFlags: 0
